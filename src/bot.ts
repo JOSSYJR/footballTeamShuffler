@@ -114,7 +114,6 @@ export async function botStart() {
         }
         return;
     });
-
     await bot.telegram.setMyCommands([
         {
             command: "/test",
@@ -125,13 +124,9 @@ export async function botStart() {
             description: "new shuffled teams",
         },
     ]);
-
-
     bot.command('test', (ctx: BotContext) => {
         ctx.sendDice()
     })
-
-
     bot.command('shuffle', (ctx: BotContext) => {
 
         if(adminID.includes(ctx.message!.from.id.toString())){
