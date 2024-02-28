@@ -1,0 +1,309 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// model user {
+//  id               String   @id
+//  userName         String?
+//  firstName        String?
+//  lastName         String?
+//  phone            String?
+//  status           Status   @default(Active)
+//  userCreationDate DateTime @default(now())
+//
+//  OwnReferalCode                  String? @unique
+//  cashOutWallet                   String?
+//  referalEarningAmountAvlInCrypto Float   @default(0)
+//  referalEarningAmount            Float   @default(0)
+//  referalEarningAmountInCrypto    Float   @default(0)
+//  numberOfReferals                Int     @default(0)
+//
+//  referalStatus ReferalStatus @default(Neutral)
+//
+//  referalCode String?
+//
+//  contractAsSeller contract[] @relation("SellerContracts")
+//  contractAsBuyer  contract[] @relation("BuyerContracts")
+//
+//  reviewsAsReviewer review[] @relation("ReviewerReviews")
+//  reviewsAsReviewed review[] @relation("ReviewedReviews")
+//
+//  Leaderboard leaderboard[]
+//  offers      offer[]
+//  otcOrder    otcOrder[]
+//  otcProduct  otcProduct[]
+//}
+//
+// model offer {
+//  id                String      @id @default(uuid())
+//  name              String
+//  description       String      @db.Text
+//  title             String
+//  photo             String      @db.Text
+//  basePrice         Float
+//  category          Category?
+//  status            OfferStatus @default(Visible)
+//  verified          Boolean?    @default(false)
+//  offerCreationDate DateTime?   @default(now())
+//
+//  user   user   @relation(fields: [userId], references: [id])
+//  userId String
+//}
+//
+// model admin {
+//  id               String     @id @default(uuid())
+//  userName         String     @unique
+//  tGuserName       String?    @unique
+//  password         String
+//  status           Status     @default(Active)
+//  role             Role       @default(Admin)
+//  userCreationDate DateTime   @default(now())
+//  contract         contract[]
+//}
+
+// model address {
+//  id           Int         @id @default(autoincrement())
+//  address      String?
+//  contractId   String?     @unique
+//  contract     contract?   @relation(fields: [contractId], references: [id])
+//  otcProductId String?     @unique
+//  otcProduct   otcProduct? @relation(fields: [otcProductId], references: [id])
+//}
+//
+// model contract {
+//  id                 String @id @default(uuid())
+//  name               String
+//  amount             Float
+//  amountInCrypto     Float?
+//  description        String @db.Text
+//  termsAndConditions String @db.Text
+//  duration           Int
+//
+//  transactionId String?
+//  groupId       String?
+//  payedIn       String?
+//  fullyPaid     Boolean?
+//
+//  sellerWallet       String?
+//  escrowWallet       String?
+//  encryptedPublicKey String?
+//  payoutCurrency     String?
+//
+//  sellerId                     String?
+//  seller                       user?          @relation("SellerContracts", fields: [sellerId], references: [id])
+//  buyerId                      String?
+//  buyer                        user?          @relation("BuyerContracts", fields: [buyerId], references: [id])
+//  status                       ContractStatus
+//  adminId                      String?
+//  admin                        admin?         @relation(fields: [adminId], references: [id])
+//  contractDeliveryDate         DateTime?
+//  expectedContractDeliveryDate DateTime?
+//  contractCreationDate         DateTime       @default(now())
+//
+//  review review?
+//
+//  address address?
+//}
+
+// model contractHistory {
+//  id                 String @id @default(uuid())
+//  name               String
+//  amount             Float
+//  description        String
+//  termsAndConditions String
+//  duration           Int
+//
+//  transactionId String?
+//  payedIn       String?
+//  fullyPaid     Boolean?
+//
+//  sellerWallet   String?
+//  payoutCurrency String?
+//
+//  sellerId                     String?
+//  buyerId                      String?
+//  status                       ContractStatus
+//  adminId                      String?
+//  contractDeliveryDate         DateTime?
+//  expectedContractDeliveryDate DateTime?
+//  contractCreationDate         DateTime       @default(now())
+//}
+
+// model review {
+//  id         String  @id @default(uuid())
+//  ratedAs    RatedAs
+//  rating     Decimal
+//  comment    String? @db.Text
+//  reviewer   user    @relation("ReviewerReviews", fields: [reviewerId], references: [id])
+//  reviewerId String
+//  reviewed   user    @relation("ReviewedReviews", fields: [reviewedId], references: [id])
+//  reviewedId String
+//
+//  contractId   String    @unique
+//  contract     contract  @relation(fields: [contractId], references: [id])
+//  creationDate DateTime? @default(now())
+//}
+
+// model leaderboard {
+//  id                String @id @default(uuid())
+//  user              user   @relation(fields: [userId], references: [id])
+//  userId            String @unique
+//  score             Int
+//  totalMoneyEarned  Float
+//  totalServicesSold Int
+//
+//  weeklyMoneyEarned  Float
+//  weeklyServicesSold Int
+//  creationDate       DateTime? @default(now())
+//
+//  // Add other fields relevant to the leaderboard
+//}
+
+model dashboardStats {
+  id                       Int   @id
+  dau                      Int
+  mau                      Int
+  userCount                Int
+  sellerCount              Int
+  buyerCount               Int
+  totalMoneyInEscrow       Float
+  totalCompleteTransaction Float
+  completeJobCount         Int
+}
+
+//
+// model otcProduct {
+//  id                 String  @id @default(uuid())
+//  token              String
+//  swapTokenOptions   String
+//  description        String?
+//  price              Float
+//  lockedStock        Float   @default(0)
+//  boughtStock        Float   @default(0)
+//  stock              Float?
+//  escrowWallet       String?
+//  encryptedPublicKey String?
+//
+//  userId           String
+//  user             user    @relation(fields: [userId], references: [id])
+//  allowPartialFill Boolean @default(false)
+//
+//  orders       otcOrder[]
+//  filled       Boolean    @default(false)
+//  paidInFull   Boolean    @default(false)
+//  visible      Boolean    @default(false)
+//  creationDate DateTime   @default(now())
+//
+//  address address?
+//}
+//
+// model otcOrder {
+//  id             String      @id @default(uuid())
+//  userId         String
+//  productId      String
+//  depositAmount  Float
+//  recevingAmount Float
+//  token          String
+//  status         OrderStatus @default(PENDING)
+//  user           user        @relation(fields: [userId], references: [id])
+//  product        otcProduct  @relation(fields: [productId], references: [id])
+//  creationDate   DateTime    @default(now())
+//}
+//
+// model supportedTokens {
+//  id             String    @id @default(uuid())
+//  ticker         String    @unique
+//  symbol         String
+//  name           String
+//  contractAdress String?
+//  creationDate   DateTime? @default(now())
+//}
+
+model fakeUsers {
+  id        String @unique
+  firstName String
+  lastName  String
+  userName  String
+  status    Status
+}
+
+model fakeContracts {
+  id                   String         @unique
+  userId               String
+  buyerId              String
+  sellerId             String
+  status               ContractStatus
+  amount               Float
+  currency             String
+  fullyPaid            Boolean
+  name                 String
+  oldAmount            Float
+  newAmount            Float
+  contractCreationDate String
+  type                 String
+}
+
+// enum OrderStatus {
+//  PENDING
+//  CONFIRMED
+//  SHIPPED
+//  DELIVERED
+//}
+
+enum Status {
+  Active
+  Banned
+  Verified
+}
+
+// enum OfferStatus {
+//  Visible
+//  Hidden
+//  Disabled
+//}
+//
+// enum ReferalStatus {
+//  Requested
+//  Approuved
+//  Declined
+//  Neutral
+//}
+
+enum ContractStatus {
+  Created
+  Entered
+  Paid
+  Appeal
+  WithdrawalRequested
+  Canceled
+  ModificationRequested
+  Released
+  FeePaid
+  Approuved
+}
+
+// enum Category {
+//  Crypto
+//  WebDevelopment
+//  GraphicDesign
+//  Other
+//}
+//
+// enum Role {
+//  Owner
+//  Admin
+//  Dev
+//}
+//
+// enum RatedAs {
+//  Buyer
+//  Seller
+//}
