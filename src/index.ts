@@ -1,18 +1,21 @@
 import express, { Application } from 'express'
+import {botStart} from './bot';
 
 
 const app: Application = express();
 require('dotenv').config()
 
 
-const port = process.env.PORT;
+const port = 3000;
 
 
 
 app.listen(port,async () => {
 
+    botStart();
 
     console.log(`Listening on ${port}`)
+
 });
 
 process.on('SIGINT', () => {
