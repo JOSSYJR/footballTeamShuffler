@@ -91,25 +91,63 @@ interface BotContext extends Context {
     myProp?: string
     myOtherProp?: number
 }
-const bot = new Telegraf<BotContext>(process.env.BOT_TOKEN??"")
+const bot = new Telegraf<BotContext>("6556597198:AAFwMfLfidqewE0oZdDHf7ypvMw9A5AjhVI")
 
-export function botStart() {
-    bot.start((ctx: BotContext) => {
-        ctx.reply('')
+let adminID = ['331951134','419296454','878661162']
+export async function botStart() {
+    bot.use((ctx, next) => {
+        const chatType = ctx.chat?.id;
+
+        // Check if the message or event is from a group chat
+        if (chatType && chatType > 0) {
+            return next();
+        }
+        else if (
+            ctx.message &&
+            "text" in ctx.message &&
+            ctx.message.text &&
+            ctx.message.text.startsWith("/")
+        ) {
+            return next();
+        } else if (ctx.callbackQuery) {
+            return next();
+        }
+        return;
+    });
+
+    await bot.telegram.setMyCommands([
+        {
+            command: "/test",
+            description: "test command",
+        },
+        {
+            command: "/shuffle",
+            description: "new shuffled teams",
+        },
+    ]);
+
+
+    bot.command('test', (ctx: BotContext) => {
+        ctx.sendDice()
     })
 
 
-    bot.command('/shuffle', (ctx: BotContext) => {
+    bot.command('shuffle', (ctx: BotContext) => {
 
-        let {team1, team2, team3} = shuffleAndTeamPlayers(Players);
+        if(adminID.includes(ctx.message!.from.id.toString())){
+            let {team1, team2, team3} = shuffleAndTeamPlayers(Players);
 
-        console.log("Team 1:", team1);
-        console.log("Team 2:", team2);
-        console.log("Team 3:", team3);
+            console.log("Team 1:", team1);
+            console.log("Team 2:", team2);
+            console.log("Team 3:", team3);
 
-        ctx.reply("Team 1: " + team1.map(player => player.name).join(", "));
-        ctx.reply("Team 2: " + team2.map(player => player.name).join(", "));
-        ctx.reply("Team 3: " + team3.map(player => player.name).join(", "));
+            ctx.reply("Team 1: " + team1.map(player => player.name).join(", "));
+            ctx.reply("Team 2: " + team2.map(player => player.name).join(", "));
+            ctx.reply("Team 3: " + team3.map(player => player.name).join(", "));
+        }
+        else {
+            console.log("Ignored")
+        }
     })
     bot.launch()
 
