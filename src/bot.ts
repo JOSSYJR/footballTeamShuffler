@@ -1,4 +1,5 @@
 import { Telegraf,Context } from 'telegraf'
+import * as cron from 'node-cron';
 enum Position {
 
 
@@ -33,7 +34,7 @@ let Players:Person[] = [
     {name:"Natnal Bassa",position:Position.pos4,skill:72,},
     {name:"Salih Mohammed",position:Position.pos4,skill:68,},
 
-    {name:"Mesele",position:Position.pos5,skill:65,},
+    {name:"Misle",position:Position.pos5,skill:65,},
     {name:"Zein",position:Position.pos5,skill:62,},
     {name:"Mike Firew",position:Position.pos5,skill:58,},
 
@@ -136,14 +137,28 @@ export async function botStart() {
             console.log("Team 2:", team2);
             console.log("Team 3:", team3);
 
+
+
             ctx.reply("Team 1: " + team1.map(player => player.name).join(", "));
             ctx.reply("Team 2: " + team2.map(player => player.name).join(", "));
             ctx.reply("Team 3: " + team3.map(player => player.name).join(", "));
+
+
         }
         else {
             console.log("Ignored")
         }
     })
+
+    cron.schedule('0 6 * * 5', () => {
+        let {team1, team2, team3} = shuffleAndTeamPlayers(Players);
+
+        bot.telegram.sendMessage(Number(process.env.GroupID), "Team 1: " + team1.map(player => player.name).join(", "));
+        bot.telegram.sendMessage(Number(process.env.GroupID), "Team 2: " + team2.map(player => player.name).join(", "));
+        bot.telegram.sendMessage(Number(process.env.GroupID), "Team 3: " + team3.map(player => player.name).join(", "));
+    });
     bot.launch()
 
 }
+
+
