@@ -1,4 +1,4 @@
-# Project Name: Football Team Shuffling Bot
+# Football Team Shuffling Bot
 
 This project is a bot application developed using TypeScript, SQL, JavaScript, and npm. The bot is designed to perform various tasks and is built with a focus on modularity and scalability.
 
