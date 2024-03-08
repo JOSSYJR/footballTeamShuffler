@@ -138,7 +138,6 @@ export async function botStart() {
             console.log("Team 3:", team3);
 
 
-
             ctx.reply("Team 1: " + team1.map(player => player.name).join(", "));
             ctx.reply("Team 2: " + team2.map(player => player.name).join(", "));
             ctx.reply("Team 3: " + team3.map(player => player.name).join(", "));
@@ -160,5 +159,3 @@ export async function botStart() {
     bot.launch()
 
 }
-
-

@@ -4,7 +4,7 @@
   "main": "./build/index.js",
   "scripts": {
     "serve": "nodemon ./src/index.ts",
-    "build": "npx prisma generate && npx prisma db push --accept-data-loss && tsc --project ./",
+    "build": "tsc --project ./",
     "start": "node ./build/index.js"
   },
   "keywords": [],
