@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "nodemon ./src/index.ts",
     "build": "tsc --project ./",
-    "start": "node ./build/index.js"
+    "start": "node ./build/index.js",
+    "test": "echo \"No tests specified\" && exit 0"
   },
   "keywords": [],
   "author": "",
