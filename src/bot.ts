@@ -18,29 +18,31 @@ type Person = {
 }
 
 let Players:Person[] = [
-    {name:"Solomon Niguse",position:Position.pos1,skill:92,},
-    {name:"Jossy Tesfaye",position:Position.pos1,skill:82,},
-    {name:"Befkadu Feleke",position:Position.pos1,skill:81,},
+    {name:"Solomon Niguse",position:Position.pos1,skill:95,},
+    {name:"Jossy Tesfaye",position:Position.pos1,skill:85,},
+    {name:"Befkadu Feleke",position:Position.pos1,skill:80,},
 
     {name:"Ahmed Abubeker",position:Position.pos2,skill:85,},
     {name:"Surafel Zelke",position:Position.pos2,skill:80,},
-    {name:"Robel Ephrem",position:Position.pos2,skill:85,},
+    {name:"Robel Ephrem",position:Position.pos2,skill:95,},
 
-    {name:"Mike Lema",position:Position.pos3,skill:82,},
-    {name:"Yordanos ",position:Position.pos3,skill:78,},
+    {name:"Mike Lema",position:Position.pos3,skill:95,},
+    {name:"Yordanos ",position:Position.pos3,skill:85,},
     {name:"Nathnal Almaw",position:Position.pos3,skill:80,},
 
-    {name:"Bamlak Amare",position:Position.pos4,skill:75,},
-    {name:"Natnal Bassa",position:Position.pos4,skill:72,},
-    {name:"Salih Mohammed",position:Position.pos4,skill:68,},
+    {name:"Bamlak Amare",position:Position.pos4,skill:70,},
+    {name:"Salih Mohammed",position:Position.pos4,skill:70,},
+    {name:"Zein",position:Position.pos5,skill:70,},
 
-    {name:"Misle",position:Position.pos5,skill:65,},
-    {name:"Zein",position:Position.pos5,skill:62,},
-    {name:"Mike Firew",position:Position.pos5,skill:58,},
 
-    {name:"Nuredin Ibrahim",position:Position.pos6,skill:50,},
-    {name:"Eyuel Solomon",position:Position.pos6,skill:55,},
-    {name:"Mika Lemlemu",position:Position.pos6,skill:45,}
+    {name:"Misle",position:Position.pos5,skill:60,},
+    {name:"Eyuel Solomon",position:Position.pos6,skill:60,},
+    {name:"Natnal Bassa",position:Position.pos4,skill:60,},
+
+    {name:"Nuredin Ibrahim",position:Position.pos6,skill:55,},
+    {name:"Mika Lemlemu",position:Position.pos6,skill:55,},
+    {name:"Mike Firew",position:Position.pos5,skill:55,},
+
 ]
 function shuffleAndTeamPlayers(players: Person[]): { team1: Person[], team2: Person[], team3: Person[] } {
     let shuffledPlayers: Person[], team1: Person[] = [], team2: Person[] = [], team3: Person[] = [];
