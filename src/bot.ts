@@ -133,6 +133,15 @@ export async function botStart() {
     bot.command('test', (ctx: BotContext) => {
         ctx.sendDice()
     })
+    
+    bot.command('attendance', (ctx: BotContext) => {
+    if(adminID.includes(ctx.message!.from.id.toString())){
+        bot.telegram.sendPoll(Number(process.env.GroupID), "Are you gonna come this week?", ["Yes", "No"], { is_anonymous: false });
+    }
+    else {
+        console.log("Ignored")
+    }
+})
     bot.command('shuffle', (ctx: BotContext) => {
 
         if(adminID.includes(ctx.message!.from.id.toString())){
