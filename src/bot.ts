@@ -54,6 +54,60 @@ function shuffleAndTeamPlayers(players: Person[]): { team1: Person[], team2: Per
         playersByPosition[player.position].push(player);
     }
 
+    let isFair = false;
+    while (!isFair) {
+        // Shuffle each position group
+        for (let position in playersByPosition) {
+            let group = playersByPosition[position];
+            for (let i = group.length - 1; i > 0; i--) {
+                let j = Math.floor(Math.random() * (i + 1));
+                [group[i], group[j]] = [group[j], group[i]];
+            }
+        }
+
+        // Distribute players to teams
+        let teamIndex = 0;
+        for (let position in playersByPosition) {
+            let group = playersByPosition[position];
+            for (let player of group) {
+                if (teamIndex % 3 === 0) {
+                    team1.push(player);
+                } else if (teamIndex % 3 === 1) {
+                    team2.push(player);
+                } else {
+                    team3.push(player);
+                }
+                teamIndex++;
+            }
+        }
+
+        isFair = isFairDistribution(team1, team2, team3);
+        if (!isFair) {
+            // Reset teams for reshuffling
+            team1 = [];
+            team2 = [];
+            team3 = [];
+        }
+    }
+
+    console.log("Total skill of Team 1:", sumSkill(team1));
+    console.log("Total skill of Team 2:", sumSkill(team2));
+    console.log("Total skill of Team 3:", sumSkill(team3));
+    return { team1, team2, team3 };
+}
+/*
+function shuffleAndTeamPlayers(players: Person[]): { team1: Person[], team2: Person[], team3: Person[] } {
+    let shuffledPlayers: Person[], team1: Person[] = [], team2: Person[] = [], team3: Person[] = [];
+
+    // Group players by position
+    let playersByPosition: { [key: string]: Person[] } = {};
+    for (let player of players) {
+        if (!playersByPosition[player.position]) {
+            playersByPosition[player.position] = [];
+        }
+        playersByPosition[player.position].push(player);
+    }
+
     // Shuffle each position group
     for (let position in playersByPosition) {
         let group = playersByPosition[position];
@@ -84,10 +138,17 @@ function shuffleAndTeamPlayers(players: Person[]): { team1: Person[], team2: Per
     return { team1, team2, team3 };
 
 }
+*/
 function sumSkill(team: Person[]): number {
     return team.reduce((sum, player) => sum + player.skill, 0);
 }
+function isFairDistribution(team1: Person[], team2: Person[], team3: Person[]): boolean {
+    const skill1 = sumSkill(team1);
+    const skill2 = sumSkill(team2);
+    const skill3 = sumSkill(team3);
 
+    return Math.abs(skill1 - skill2) <= 5 && Math.abs(skill1 - skill3) <= 10 && Math.abs(skill2 - skill3) <= 5;
+}
 interface BotContext extends Context {
     myProp?: string
     myOtherProp?: number
@@ -133,7 +194,7 @@ export async function botStart() {
     bot.command('test', (ctx: BotContext) => {
         ctx.sendDice()
     })
-    
+
     bot.command('attendance', (ctx: BotContext) => {
     if(adminID.includes(ctx.message!.from.id.toString())){
         bot.telegram.sendPoll(Number(process.env.GroupID), "Are you gonna come this week?", ["Yes", "No"], { is_anonymous: false });
