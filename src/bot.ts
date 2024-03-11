@@ -124,7 +124,12 @@ export async function botStart() {
             command: "/shuffle",
             description: "new shuffled teams",
         },
+        {
+            command: "/attendance",
+            description: "Attendance for the week",
+        },
     ]);
+
     bot.command('test', (ctx: BotContext) => {
         ctx.sendDice()
     })
@@ -148,6 +153,11 @@ export async function botStart() {
             console.log("Ignored")
         }
     })
+
+    cron.schedule('0 6 * * 4', () => {
+        bot.telegram.sendPoll(Number(process.env.GroupID), "Are you gonna come this week?", ["Yes", "No"], { is_anonymous: false });
+    });
+
 
     cron.schedule('0 6 * * 5', () => {
         let {team1, team2, team3} = shuffleAndTeamPlayers(Players);
