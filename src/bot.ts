@@ -18,7 +18,7 @@ type Person = {
 }
 
 let Players:Person[] = [
-    {name:"Solomon Niguse",position:Position.pos1,skill:92,},
+    {name:"Solomon Niguse",position:Position.pos1,skill:95,},
     {name:"Jossy Tesfaye",position:Position.pos1,skill:82,},
     {name:"Befkadu Feleke",position:Position.pos1,skill:81,},
 
