@@ -20,13 +20,13 @@ type Person = {
 let Players:Person[] = [
     {name:"Solomon Niguse",position:Position.pos1,skill:95,},
     {name:"Jossy Tesfaye",position:Position.pos1,skill:82,},
-    {name:"Befkadu Feleke",position:Position.pos1,skill:81,},
+    {name:"Ahmed Abubeker",position:Position.pos1,skill:85,},
 
-    {name:"Ahmed Abubeker",position:Position.pos2,skill:85,},
+    {name:"Befkadu Feleke",position:Position.pos2,skill:81,},
     {name:"Surafel Zelke",position:Position.pos2,skill:80,},
     {name:"Robel Ephrem",position:Position.pos2,skill:85,},
 
-    {name:"Mike Lema",position:Position.pos3,skill:82,},
+    {name:"Mike Lema",position:Position.pos3,skill:85,},
     {name:"Yordanos ",position:Position.pos3,skill:78,},
     {name:"Nathnal Almaw",position:Position.pos3,skill:80,},
 
@@ -179,6 +179,7 @@ export async function botStart() {
             console.log("Ignored")
         }
     })
+
 
     cron.schedule('0 6 * * 4', () => {
         bot.telegram.sendPoll(Number(process.env.GroupID), "Are you gonna come this week?", ["Yes", "No"], { is_anonymous: false });
