@@ -18,13 +18,15 @@ type Person = {
 }
 
 let Players:Person[] = [
+
     {name:"Solomon Niguse",position:Position.pos1,skill:95,},
-    {name:"Jossy Tesfaye",position:Position.pos1,skill:82,},
+    {name:"Robel Ephrem",position:Position.pos1,skill:85,},
     {name:"Ahmed Abubeker",position:Position.pos1,skill:85,},
 
     {name:"Befkadu Feleke",position:Position.pos2,skill:81,},
     {name:"Surafel Zelke",position:Position.pos2,skill:80,},
-    {name:"Robel Ephrem",position:Position.pos2,skill:85,},
+    {name:"Jossy Tesfaye",position:Position.pos2,skill:82,},
+
 
     {name:"Mike Lema",position:Position.pos3,skill:85,},
     {name:"Yordanos ",position:Position.pos3,skill:78,},
