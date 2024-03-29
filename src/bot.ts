@@ -188,7 +188,7 @@ export async function botStart() {
     });
 
 
-    cron.schedule('0 6 * * 8', () => {
+    cron.schedule('10 8 * * 5', () => {
         let {team1, team2, team3} = shuffleAndTeamPlayers(Players);
 
         bot.telegram.sendMessage(Number(process.env.GroupID), "Team 1: " + team1.map(player => player.name).join(", "));
