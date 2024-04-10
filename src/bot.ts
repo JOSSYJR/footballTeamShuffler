@@ -20,29 +20,29 @@ type Person = {
 let Players:Person[] = [
 
     {name:"Solomon Niguse",position:Position.pos1,skill:95,},
-    {name:"Robel Ephrem",position:Position.pos1,skill:85,},
+    {name:"Robel Ephrem",position:Position.pos1,skill:88,},
     {name:"Ahmed Abubeker",position:Position.pos1,skill:85,},
 
-    {name:"Befkadu Feleke",position:Position.pos2,skill:81,},
-    {name:"Surafel Zelke",position:Position.pos2,skill:80,},
+    {name:"Befkadu Feleke",position:Position.pos2,skill:80,},
+    {name:"Surafel Zelke",position:Position.pos2,skill:82,},
     {name:"Jossy Tesfaye",position:Position.pos2,skill:82,},
 
 
-    {name:"Mike Lema",position:Position.pos3,skill:85,},
-    {name:"Yordanos ",position:Position.pos3,skill:78,},
-    {name:"Nathnal Almaw",position:Position.pos3,skill:80,},
+    {name:"Mike Lema",position:Position.pos3,skill:88,},
+    {name:"Yordanos ",position:Position.pos3,skill:85,},
+    {name:"Nathnal Almaw",position:Position.pos3,skill:82,},
 
     {name:"Bamlak Amare",position:Position.pos4,skill:75,},
     {name:"Natnal Bassa",position:Position.pos4,skill:72,},
-    {name:"Salih Mohammed",position:Position.pos4,skill:68,},
+    {name:"Salih Mohammed",position:Position.pos4,skill:69,},
 
     {name:"Misle",position:Position.pos5,skill:65,},
-    {name:"Zein",position:Position.pos5,skill:62,},
+    {name:"Zein",position:Position.pos5,skill:68,},
     {name:"Mike Firew",position:Position.pos5,skill:58,},
 
     {name:"Nuredin Ibrahim",position:Position.pos6,skill:50,},
     {name:"Eyuel Solomon",position:Position.pos6,skill:55,},
-    {name:"Mika Lemlemu",position:Position.pos6,skill:45,}
+    {name:"Mika Lemlemu",position:Position.pos6,skill:48,}
 ]
 function shuffleAndTeamPlayers(players: Person[]): { team1: Person[], team2: Person[], team3: Person[] } {
     let shuffledPlayers: Person[], team1: Person[] = [], team2: Person[] = [], team3: Person[] = [];
@@ -67,11 +67,19 @@ function shuffleAndTeamPlayers(players: Person[]): { team1: Person[], team2: Per
             }
         }
 
-        // Distribute players to teams
+        // Sort players within each position group by skill level
+        for (let position in playersByPosition) {
+            let group = playersByPosition[position];
+            group.sort((a, b) => b.skill - a.skill);
+        }
+
+        // Distribute players to teams while considering skill balance
         let teamIndex = 0;
         for (let position in playersByPosition) {
             let group = playersByPosition[position];
-            for (let player of group) {
+            let groupIndex = 0;
+            while (groupIndex < group.length) {
+                let player = group[groupIndex];
                 if (teamIndex % 3 === 0) {
                     team1.push(player);
                 } else if (teamIndex % 3 === 1) {
@@ -80,6 +88,7 @@ function shuffleAndTeamPlayers(players: Person[]): { team1: Person[], team2: Per
                     team3.push(player);
                 }
                 teamIndex++;
+                groupIndex++;
             }
         }
 
