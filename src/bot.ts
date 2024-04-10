@@ -122,7 +122,7 @@ interface BotContext extends Context {
 }
 const bot = new Telegraf<BotContext>("6556597198:AAFwMfLfidqewE0oZdDHf7ypvMw9A5AjhVI")
 
-let adminID = ['331951134','419296454','878661162']
+let adminID = ['331951134','419296454','878661162','1431574518']
 export async function botStart() {
     bot.use((ctx, next) => {
         const chatType = ctx.chat?.id;
