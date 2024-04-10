@@ -19,13 +19,14 @@ type Person = {
 
 let Players:Person[] = [
 
-    {name:"Solomon Niguse",position:Position.pos1,skill:95,},
+    {name:"Solomon Niguse",position:Position.pos1,skill:94,},
     {name:"Robel Ephrem",position:Position.pos1,skill:88,},
     {name:"Ahmed Abubeker",position:Position.pos1,skill:85,},
 
-    {name:"Befkadu Feleke",position:Position.pos2,skill:80,},
+ 
     {name:"Surafel Zelke",position:Position.pos2,skill:82,},
     {name:"Jossy Tesfaye",position:Position.pos2,skill:82,},
+    {name:"Befkadu Feleke",position:Position.pos2,skill:80,},
 
 
     {name:"Mike Lema",position:Position.pos3,skill:88,},
@@ -34,16 +35,24 @@ let Players:Person[] = [
 
     {name:"Bamlak Amare",position:Position.pos4,skill:75,},
     {name:"Natnal Bassa",position:Position.pos4,skill:72,},
-    {name:"Salih Mohammed",position:Position.pos4,skill:69,},
+    {name:"Salih Mohammed",position:Position.pos4,skill:72,},
 
+    {name:"Zein",position:Position.pos5,skill:70,},
     {name:"Misle",position:Position.pos5,skill:65,},
-    {name:"Zein",position:Position.pos5,skill:68,},
     {name:"Mike Firew",position:Position.pos5,skill:58,},
 
-    {name:"Nuredin Ibrahim",position:Position.pos6,skill:50,},
     {name:"Eyuel Solomon",position:Position.pos6,skill:55,},
+    {name:"Nuredin Ibrahim",position:Position.pos6,skill:50,},
     {name:"Mika Lemlemu",position:Position.pos6,skill:48,}
 ]
+const restrictedPlayers: string[][] = [
+   ["Solomon Niguse", "Robel Ephrem"],
+   ["Solomon Niguse", "Mike Lema"],
+   ["Mike Lema", "Robel Ephrem"],
+   ["Salih Mohammed", "Zein"],
+   ["Salih Mohammed", "Nathnal Almaw"],
+   ["Nathnal Almaw", "Zein"],
+];
 function shuffleAndTeamPlayers(players: Person[]): { team1: Person[]; team2: Person[]; team3: Person[] } {
   let shuffledPlayers: Person[], team1: Person[] = [], team2: Person[] = [], team3: Person[] = [];
 
@@ -126,6 +135,30 @@ function getSkillGroup(skill: number): string {
   } else {
     return "low";
   }
+}
+function getTargetTeam(team1: Person[], team2: Person[],team3: Person[], skillGroup: string): Person[] {
+  let targetTeam: Person[];
+  if (skillGroup === "high") {
+    targetTeam = team1.length <= team2.length ? team1 : team2;
+  } else if (skillGroup === "medium") {
+    targetTeam = team2.length <= team3.length ? team2 : team3;
+  } else {
+    targetTeam = team3.length <= team1.length ? team3 : team1;
+  }
+  return targetTeam;
+}
+
+function isRestricted(playerName: string, team: Person[]): boolean {
+  for (let restriction of restrictedPlayers) {
+    if (restriction.includes(playerName)) {
+      for (let playerName of restriction) {
+        if (team.some(player => player.name === playerName)) {
+          return true;
+        }
+      }
+    }
+  }
+  return false;
 }
 
 function getTargetTeam(team1: Person[], team2: Person[], team3: Person[], skillGroup: string): Person[] {
