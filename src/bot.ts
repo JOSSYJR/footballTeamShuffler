@@ -114,7 +114,7 @@ function isFairDistribution(team1: Person[], team2: Person[], team3: Person[]): 
     const skill2 = sumSkill(team2);
     const skill3 = sumSkill(team3);
 
-    return Math.abs(skill1 - skill2) <= 5 && Math.abs(skill1 - skill3) <= 5 && Math.abs(skill2 - skill3) <= 5;
+    return Math.abs(skill1 - skill2) <= 3 && Math.abs(skill1 - skill3) <= 3 && Math.abs(skill2 - skill3) <= 3;
 }
 interface BotContext extends Context {
     myProp?: string
@@ -122,7 +122,7 @@ interface BotContext extends Context {
 }
 const bot = new Telegraf<BotContext>("6556597198:AAFwMfLfidqewE0oZdDHf7ypvMw9A5AjhVI")
 
-let adminID = ['331951134','419296454','878661162','1431574518']
+let adminID = ['331951134','419296454','878661162','1431574518'] 
 export async function botStart() {
     bot.use((ctx, next) => {
         const chatType = ctx.chat?.id;
