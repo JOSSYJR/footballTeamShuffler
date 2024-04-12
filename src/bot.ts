@@ -44,69 +44,67 @@ let Players:Person[] = [
     {name:"Eyuel Solomon",position:Position.pos6,skill:55,},
     {name:"Mika Lemlemu",position:Position.pos6,skill:48,}
 ]
-function shuffleAndTeamPlayers(players: Person[]): { team1: Person[]; team2: Person[]; team3: Person[] } {
-  let shuffledPlayers: Person[], team1: Person[] = [], team2: Person[] = [], team3: Person[] = [];
+function shuffleAndTeamPlayers(players: Person[]): { team1: Person[], team2: Person[], team3: Person[] } {
+    let shuffledPlayers: Person[], team1: Person[] = [], team2: Person[] = [], team3: Person[] = [];
 
-  // Group players by position
-  let playersByPosition: { [key: string]: Person[] } = {};
-  for (let player of players) {
-    if (!playersByPosition[player.position]) {
-      playersByPosition[player.position] = [];
-    }
-    playersByPosition[player.position].push(player);
-  }
-
-  let isFair = false;
-  while (!isFair) {
-    // Shuffle each position group
-    for (let position in playersByPosition) {
-      let group = playersByPosition[position];
-      for (let i = group.length - 1; i > 0; i--) {
-        let j = Math.floor(Math.random() * (i + 1));
-        [group[i], group[j]] = [group[j], group[i]];
-      }
+    // Group players by position
+    let playersByPosition: { [key: string]: Person[] } = {};
+    for (let player of players) {
+        if (!playersByPosition[player.position]) {
+            playersByPosition[player.position] = [];
+        }
+        playersByPosition[player.position].push(player);
     }
 
-    // Sort players within each position group by skill level
-    for (let position in playersByPosition) {
-      let group = playersByPosition[position];
-      group.sort((a, b) => b.skill - a.skill);
+    let isFair = false;
+    while (!isFair) {
+        // Shuffle each position group
+        for (let position in playersByPosition) {
+            let group = playersByPosition[position];
+            for (let i = group.length - 1; i > 0; i--) {
+                let j = Math.floor(Math.random() * (i + 1));
+                [group[i], group[j]] = [group[j], group[i]];
+            }
+        }
+
+        // Sort players within each position group by skill level
+        for (let position in playersByPosition) {
+            let group = playersByPosition[position];
+            group.sort((a, b) => b.skill - a.skill);
+        }
+
+        // Distribute players to teams while considering skill balance
+        let teamIndex = 0;
+        for (let position in playersByPosition) {
+            let group = playersByPosition[position];
+            let groupIndex = 0;
+            while (groupIndex < group.length) {
+                let player = group[groupIndex];
+                if (teamIndex % 3 === 0) {
+                    team1.push(player);
+                } else if (teamIndex % 3 === 1) {
+                    team2.push(player);
+                } else {
+                    team3.push(player);
+                }
+                teamIndex++;
+                groupIndex++;
+            }
+        }
+
+        isFair = isFairDistribution(team1, team2, team3);
+        if (!isFair) {
+            // Reset teams for reshuffling
+            team1 = [];
+            team2 = [];
+            team3 = [];
+        }
     }
 
-    // Distribute players to teams while considering skill balance and positional diversity
-    let teamIndex = 0;
-    let skillGroups: { [key: string]: Person[] } = {
-      high: [],
-      medium: [],
-      low: []
-    };
-
-    for (let position in playersByPosition) {
-      let group = playersByPosition[position];
-      let groupIndex = 0;
-      while (groupIndex < group.length) {
-        let player = group[groupIndex];
-        let skillGroup = getSkillGroup(player.skill);
-        let targetTeam = getTargetTeam(team1, team2, team3, skillGroup);
-        targetTeam.push(player);
-        teamIndex++;
-        groupIndex++;
-      }
-    }
-
-    isFair = isFairDistribution(team1, team2, team3);
-    if (!isFair) {
-      // Reset teams for reshuffling
-      team1 = [];
-      team2 = [];
-      team3 = [];
-    }
-  }
-
-  console.log("Total skill of Team 1:", sumSkill(team1));
-  console.log("Total skill of Team 2:", sumSkill(team2));
-  console.log("Total skill of Team 3:", sumSkill(team3));
-  return { team1, team2, team3 };
+    console.log("Total skill of Team 1:", sumSkill(team1));
+    console.log("Total skill of Team 2:", sumSkill(team2));
+    console.log("Total skill of Team 3:", sumSkill(team3));
+    return { team1, team2, team3 };
 }
 function sumSkill(team: Person[]): number {
     return team.reduce((sum, player) => sum + player.skill, 0);
@@ -118,45 +116,6 @@ function isFairDistribution(team1: Person[], team2: Person[], team3: Person[]): 
 
     return Math.abs(skill1 - skill2) <= 3 && Math.abs(skill1 - skill3) <= 3 && Math.abs(skill2 - skill3) <= 3;
 }
-function getSkillGroup(skill: number): string {
-  if (skill >= 90) {
-    return "high";
-  } else if (skill >= 80) {
-    return "medium";
-  } else {
-    return "low";
-  }
-}
-
-function getTargetTeam(team1: Person[], team2: Person[], team3: Person[], skillGroup: string): Person[] {
-  let minTeamSize = Math.min(team1.length, team2.length, team3.length);
-  let targetTeam: Person[];
-
-  if (skillGroup === "high") {
-    // Distribute high-skill players evenly among teams
-    if (team1.length === minTeamSize) {
-      targetTeam = team1;
-    } else if (team2.length === minTeamSize) {
-      targetTeam = team2;
-    } else {
-      targetTeam = team3;
-    }
-  } else {
-    // Distribute medium and low-skill players to the team with the lowest total skill
-    let totalSkill1 = sumSkill(team1);
-    let totalSkill2 = sumSkill(team2);
-    let totalSkill3 = sumSkill(team3);
-    if (totalSkill1 <= totalSkill2 && totalSkill1 <=totalSkill3) {
-        targetTeam = team1;
-      } else if (totalSkill2 <= totalSkill1 && totalSkill2 <= totalSkill3) {
-        targetTeam = team2;
-      } else {
-        targetTeam = team3;
-      }
-    }
-
-    return targetTeam;
-  }
 interface BotContext extends Context {
     myProp?: string
     myOtherProp?: number
