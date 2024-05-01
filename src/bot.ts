@@ -35,8 +35,8 @@ let Players:Person[] = [
     {name:"Natnal Bassa",position:Position.pos4,skill:72,},
     {name:"Salih Mohammed",position:Position.pos4,skill:68,},
 
-    {name:"Misle",position:Position.pos5,skill:62,},
-    {name:"Zein",position:Position.pos5,skill:65,},
+    {name:"Misle",position:Position.pos5,skill:65,},
+    {name:"Zein",position:Position.pos5,skill:62,},
     {name:"Mike Firew",position:Position.pos5,skill:58,},
 
     {name:"Nuredin Ibrahim",position:Position.pos6,skill:50,},
