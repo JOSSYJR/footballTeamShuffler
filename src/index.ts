@@ -2,7 +2,7 @@ import express, { Application } from 'express'
 import {botStart} from './bot';
 const app: Application = express();
 require('dotenv').config()
-const port = 3000;
+const port = 3001;
 app.listen(port,async () => {
     botStart();
     console.log(`Listening on ${port}`)
