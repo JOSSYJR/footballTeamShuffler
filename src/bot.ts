@@ -23,7 +23,7 @@ let Players:Person[] = [
     {name:"Ahmed Abubeker",position:Position.pos1,skill:85,},
 
     {name:"Abel Tesegaye",position:Position.pos2,skill:72,},
-    {name:"Surafel Zelke",position:Position.pos2,skill:82,},
+    {name:"Abdullah ",position:Position.pos2,skill:68,},
     {name:"Jossy Tesfaye",position:Position.pos2,skill:80,},
 
     {name:"Mike Lema",position:Position.pos3,skill:85,},
@@ -38,7 +38,7 @@ let Players:Person[] = [
     {name:"Zein",position:Position.pos5,skill:62,},
     {name:"Mike Firew",position:Position.pos5,skill:58,},
 
-    {name:"Abdullah",position:Position.pos6,skill:68,},
+    {name:"Yoseph Wondowsen",position:Position.pos6,skill:55,},
     {name:"Eyuel Solomon",position:Position.pos6,skill:60,},
     {name:"Mika Lemlemu",position:Position.pos6,skill:50,}
 ]
