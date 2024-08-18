@@ -18,29 +18,29 @@ type Person = {
 
 let Players:Person[] = [
 
-    {name:"Yared Mekonen",position:Position.pos1,skill:85,},
-    {name:"Robel Ephrem",position:Position.pos1,skill:85,},
+    {name:"Mike Lema",position:Position.pos1,skill:86,},
+    {name:"Robel Ephrem",position:Position.pos1,skill:88,},
     {name:"Ahmed Abubeker",position:Position.pos1,skill:85,},
 
-    {name:"Abel Tesegaye",position:Position.pos2,skill:72,},
-    {name:"Abdullah ",position:Position.pos2,skill:68,},
+    {name:"Surafel Zeleke",position:Position.pos2,skill:80,},
+    {name:" Nathnal Almaw",position:Position.pos2,skill:82,},
     {name:"Jossy Tesfaye",position:Position.pos2,skill:80,},
 
-    {name:"Mike Lema",position:Position.pos3,skill:85,},
-    {name:"Nolawi",position:Position.pos3,skill:82,},
-    {name:"Nathnal Almaw",position:Position.pos3,skill:80,},
+    {name:"Abel Tesegaye",position:Position.pos3,skill:65,},
+    {name:"Eyuel Solomon",position:Position.pos3,skill:70,},
+    {name:"Natnal Bassa",position:Position.pos3,skill:68,},
 
     {name:"Bamlak Amare",position:Position.pos4,skill:75,},
-    {name:"Natnal Bassa",position:Position.pos4,skill:72,},
-    {name:"Salih Mohammed",position:Position.pos4,skill:68,},
+    {name:"Zein Hussain",position:Position.pos4,skill:72,},
+    {name:"Salih Mohammed",position:Position.pos4,skill:70,},
 
-    {name:"Misle",position:Position.pos5,skill:65,},
-    {name:"Zein",position:Position.pos5,skill:62,},
-    {name:"Mike Firew",position:Position.pos5,skill:58,},
+    {name:"Misle Tsegaye",position:Position.pos5,skill:65,},
+    {name:"Mika Lemlemu",position:Position.pos5,skill:57,},
+    {name:"Mike Firew",position:Position.pos5,skill:60,},
 
     {name:"Yoseph Wondowsen",position:Position.pos6,skill:55,},
-    {name:"Eyuel Solomon",position:Position.pos6,skill:60,},
-    {name:"Mika Lemlemu",position:Position.pos6,skill:50,}
+    {name:"Abdullah Iliyas",position:Position.pos6,skill:50,},
+    {name:"Nuredin Ibrahim ",position:Position.pos6,skill:55,}
 ]
 function shuffleAndTeamPlayers(players: Person[]): { team1: Person[], team2: Person[], team3: Person[] } {
     let shuffledPlayers: Person[], team1: Person[] = [], team2: Person[] = [], team3: Person[] = [];
