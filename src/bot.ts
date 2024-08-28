@@ -26,13 +26,13 @@ let Players:Person[] = [
     {name:" Nathnal Almaw",position:Position.pos2,skill:82,},
     {name:"Jossy Tesfaye",position:Position.pos2,skill:80,},
 
-    {name:"Abel Tesegaye",position:Position.pos3,skill:65,},
-    {name:"Eyuel Solomon",position:Position.pos3,skill:70,},
-    {name:"Natnal Bassa",position:Position.pos3,skill:68,},
-
-    {name:"Bamlak Amare",position:Position.pos4,skill:75,},
-    {name:"Zein Hussain",position:Position.pos4,skill:72,},
-    {name:"Salih Mohammed",position:Position.pos4,skill:70,},
+    {name:"Bamlak Amare",position:Position.pos3,skill:75,},
+     {name:"Eyuel Solomon",position:Position.pos3,skill:70,},
+    {name:"Salih Mohammed",position:Position.pos3,skill:72,},
+    
+    {name:"Abel Tesegaye",position:Position.pos4,skill:65,},
+    {name:"Zein Hussain",position:Position.pos4,skill:70,},
+    {name:"Natnal Bassa",position:Position.pos4,skill:68,},
 
     {name:"Misle Tsegaye",position:Position.pos5,skill:65,},
     {name:"Mika Lemlemu",position:Position.pos5,skill:57,},
