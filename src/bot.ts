@@ -37,7 +37,7 @@ let Players:Person[] = [
     
     {name:"Mike Firew",position:Position.pos5,skill:60,},
     {name:"Abel Tesegaye",position:Position.pos5,skill:65,},
-    {name:"Robel Ephrem",position:Position.pos5,skill:88,},
+    {name:"Robel Ephrem",position:Position.pos5,skill:65,},
 
     {name:"Mika Lemlemu",position:Position.pos6,skill:57,},
     {name:"Abdullah Iliyas",position:Position.pos6,skill:50,},
