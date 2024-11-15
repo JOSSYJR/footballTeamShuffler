@@ -22,22 +22,22 @@ let Players:Person[] = [
     {name:"Ahmed Abubeker",position:Position.pos1,skill:85,},
     {name:"Solomon Nigusse",position:Position.pos1,skill:92,},
 
-   
     {name:"Surafel Zeleke",position:Position.pos2,skill:81,},
-    {name:" Nathnal Almaw",position:Position.pos2,skill:82,},
+    {name:"Nathnal Almaw",position:Position.pos2,skill:82,},
     {name:"Jossy Tesfaye",position:Position.pos2,skill:80,},
-    
-    {name:"Eyuel Solomon",position:Position.pos3,skill:70,},
+
+    {name:"Robel",position:Position.pos3,skill:65,},
     {name:"Salih Mohammed",position:Position.pos3,skill:72,},
     {name:"Bamlak Amare",position:Position.pos3,skill:75,},
     
     {name:"Zein Hussain",position:Position.pos4,skill:70,},
     {name:"Natnal Bassa",position:Position.pos4,skill:68,},
-    {name:"Misle Tsegaye",position:Position.pos4,skill:65,},
-    
+    {name:"Eyuel Solomon",position:Position.pos4,skill:70,},
+
+    {name:"Misle Tsegaye",position:Position.pos5,skill:65,},
     {name:"Mike Firew",position:Position.pos5,skill:60,},
     {name:"Abel Tesegaye",position:Position.pos5,skill:65,},
-    {name:"Robel Ephrem",position:Position.pos5,skill:65,},
+
 
     {name:"Mika Lemlemu",position:Position.pos6,skill:57,},
     {name:"Abdullah Iliyas",position:Position.pos6,skill:50,},
