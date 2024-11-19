@@ -26,7 +26,7 @@ let Players:Person[] = [
     {name:"Nathnal Almaw",position:Position.pos2,skill:82,},
     {name:"Jossy Tesfaye",position:Position.pos2,skill:80,},
 
-    {name:"Robel",position:Position.pos3,skill:65,},
+    {name:"Robel",position:Position.pos3,skill:75,},
     {name:"Salih Mohammed",position:Position.pos3,skill:72,},
     {name:"Bamlak Amare",position:Position.pos3,skill:75,},
     
