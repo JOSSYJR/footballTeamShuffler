@@ -15,7 +15,6 @@ type Person = {
     skill:number,
     position:Position,
 }
-
 let Players:Person[] = [
 
     {name:"Mike Lema",position:Position.pos1,skill:86,},
@@ -26,7 +25,7 @@ let Players:Person[] = [
     {name:"Nathnal Almaw",position:Position.pos2,skill:82,},
     {name:"Jossy Tesfaye",position:Position.pos2,skill:80,},
 
-    {name:"Robel",position:Position.pos3,skill:75,},
+    {name:"Ephrem",position:Position.pos3,skill:78,},
     {name:"Salih Mohammed",position:Position.pos3,skill:72,},
     {name:"Bamlak Amare",position:Position.pos3,skill:75,},
     
@@ -38,10 +37,10 @@ let Players:Person[] = [
     {name:"Mike Firew",position:Position.pos5,skill:60,},
     {name:"Abel Tesegaye",position:Position.pos5,skill:65,},
 
-
     {name:"Mika Lemlemu",position:Position.pos6,skill:57,},
     {name:"Abdullah Iliyas",position:Position.pos6,skill:50,},
     {name:"Nuredin Ibrahim ",position:Position.pos6,skill:55,}
+
 ]
 function shuffleAndTeamPlayers(players: Person[]): { team1: Person[], team2: Person[], team3: Person[] } {
     let shuffledPlayers: Person[], team1: Person[] = [], team2: Person[] = [], team3: Person[] = [];
