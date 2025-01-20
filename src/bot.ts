@@ -15,31 +15,34 @@ type Person = {
     skill:number,
     position:Position,
 }
+
 let Players:Person[] = [
 
-    {name:"Mike Lema",position:Position.pos1,skill:86,},
-    {name:"Ahmed Abubeker",position:Position.pos1,skill:85,},
-    {name:"Solomon Nigusse",position:Position.pos1,skill:92,},
+    {name:"Mike Lema",position:Position.pos1,skill:95,},
+    {name:"Romhay Yemaneh",position:Position.pos1,skill:90,},
+    {name:"Robel Suru",position:Position.pos1,skill:88 ,},
 
     {name:"Surafel Zeleke",position:Position.pos2,skill:81,},
-    {name:"Nathnal Almaw",position:Position.pos2,skill:82,},
-    {name:"Jossy Tesfaye",position:Position.pos2,skill:80,},
+    {name:"Amanuel Esayas",position:Position.pos2,skill:82,},
+    {name:"Ephrem ",position:Position.pos2,skill:85,},
 
-    {name:"Ephrem",position:Position.pos3,skill:78,},
-    {name:"Salih Mohammed",position:Position.pos3,skill:72,},
-    {name:"Bamlak Amare",position:Position.pos3,skill:75,},
-    
-    {name:"Zein Hussain",position:Position.pos4,skill:70,},
-    {name:"Natnal Bassa",position:Position.pos4,skill:68,},
-    {name:"Eyuel Solomon",position:Position.pos4,skill:70,},
+    {name:"Nahom Samuel",position:Position.pos3,skill:77,},
+    {name:"Jossy Tesfaye",position:Position.pos3,skill:80,},
+    {name:"Robel Ephrem",position:Position.pos3,skill:75,},
 
-    {name:"Misle Tsegaye",position:Position.pos5,skill:65,},
-    {name:"Mike Firew",position:Position.pos5,skill:60,},
-    {name:"Abel Tesegaye",position:Position.pos5,skill:65,},
+    {name:"Sofoniyas ",position:Position.pos4,skill:70,},
+    {name:"Sessen Yemaneh",position:Position.pos4,skill:72,},
+    {name:"Bamlak Amare",position:Position.pos4,skill:75,},
 
-    {name:"Mika Lemlemu",position:Position.pos6,skill:57,},
-    {name:"Abdullah Iliyas",position:Position.pos6,skill:50,},
-    {name:"Nuredin Ibrahim ",position:Position.pos6,skill:55,}
+    {name:"Eyuel Solomon",position:Position.pos5,skill:70,},
+    {name:"Amanuel Ephi",position:Position.pos5,skill:68,},
+    {name:"Abdullah  ",position:Position.pos5,skill:50,},
+
+
+    {name:"Misle Tsegaye",position:Position.pos6,skill:60,},
+    {name:"Mike Firew",position:Position.pos6,skill:65,},
+    {name:"Nuredin Ibrahim",position:Position.pos6,skill:55,}
+
 
 ]
 function shuffleAndTeamPlayers(players: Person[]): { team1: Person[], team2: Person[], team3: Person[] } {
